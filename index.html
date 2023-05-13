@@ -22,32 +22,6 @@
             height: 100vh;
             background-color: #000033;
         }
-        /* ... Your existing CSS ... */
-
-        #claimButton {
-    background: none;
-    border: none;
-}
-
-        .coin {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background-image: url('path/to/your/coin/image.png');
-    background-size: cover;
-    animation: coinFall 3s linear infinite;
-}
-
-        @keyframes coinFall {
-    0% {
-        top: -30px;
-        left: calc(100vw * var(--random-left));
-        animation-timing-function: cubic-bezier(var(--random-bezier), var(--random-bezier), var(--random-bezier), var(--random-bezier));
-    }
-    100% {
-        top: calc(100vh + 30px);
-    }
-}
 
         .header, .footer {
             background-color: #800000;
@@ -73,6 +47,31 @@
                 width: 90%;
             }
         }
+
+        #claimButton {
+            background: none;
+            border: none;
+        }
+
+        .coin {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background-image: url('path/to/your/coin/image.png');
+            background-size: cover;
+            animation: coinFall 3s linear infinite;
+        }
+
+        @keyframes coinFall {
+            0% {
+                top: -30px;
+                left: calc(100vw * var(--random-left));
+                animation-timing-function: cubic-bezier(var(--random-bezier), var(--random-bezier), var(--random-bezier), var(--random-bezier));
+            }
+            100% {
+                top: calc(100vh + 30px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -81,41 +80,65 @@
     </div>
 
     <div class="content">
-    <h2>Claim your token</h2>
-    <button id="claimButton">
-        <img src="path/to/your/coin/image.png" alt="Claim Token"/>
-    </button>
-</div>
+        <!-- ... your content here ... -->
+
+        <h2>Claim your token</h2>
+        <button id="claimButton">
+            <img src="path/to/your/coin/image.png" alt="Claim Token"/>
+        </button>
+    </div>
 
     <div class="footer">
         <p>&copy; 2023 Blockchain Token Project</p>
     </div>
 
-    // ... Your existing JavaScript ...
+        <!-- ... Rest of your HTML ... -->
+    <script>
+        window.addEventListener('load', function () {
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    ethereum.enable();
+                } catch (error) {
+                    console.log("User denied account access.")
+                }
+            } else if (window.web3) {
+                window.web3 = new Web3(web3.currentProvider);
+            } else {
+                console.log('Non-Ethereum browser detected. Consider installing MetaMask!');
+            }
 
-document.getElementById('claimButton').addEventListener('click', function() {
-    // ... Your existing claimToken function ...
+            var contractAddress = 'CONTRACT_ADDRESS';
+            var ABI = ABI_DEFINITION;
+            var contract = new web3.eth.Contract(ABI, contractAddress);
 
-    // After successfully claiming the token, create the coin rain effect
-    createCoinRain();
-});
-
-function createCoinRain() {
-    // Create 100 coins
-    for (let i = 0; i < 100; i++) {
-        const coin = document.createElement('div');
-        coin.className = 'coin';
-        document.body.appendChild(coin);
-    }
-
-    // Remove coins after the animation ends
-    setTimeout(function() {
-        const coins = document.querySelectorAll('.coin');
-        coins.forEach(function(coin) {
-            coin.remove();
+            document.getElementById('claimButton').addEventListener('click', function() {
+                web3.eth.getAccounts().then(function(accounts) {
+                    contract.methods.claimToken().send({from: accounts[0]})
+                    .on('transactionHash', function(hash){
+                        createCoinRain();
+                    })
+                    .on('error', console.error);
+                });
+            });
         });
-    }, 3000);  // Adjust based on your animation duration
-}
 
+        function createCoinRain() {
+            // Create 100 coins
+            for (let i = 0; i < 100; i++) {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                document.body.appendChild(coin);
+            }
+
+            // Remove coins after the animation ends
+            setTimeout(function() {
+                const coins = document.querySelectorAll('.coin');
+                coins.forEach(function(coin) {
+                    coin.remove();
+                });
+            }, 3000);  // Adjust based on your animation duration
+        }
+    </script>
 </body>
 </html>
