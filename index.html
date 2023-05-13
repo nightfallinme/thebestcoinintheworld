@@ -6,7 +6,47 @@
     <title>Blockchain Token Project</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
     <style>
-        /* ... your CSS styles here ... */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000033;
+        }
+
+        .header, .footer {
+            background-color: #800000;
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+        }
+
+        .content {
+            background-color: #000033;
+            padding: 20px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .content h2, .content p {
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .content, .header, .footer {
+                padding: 10px;
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -25,39 +65,6 @@
         <p>&copy; 2023 Blockchain Token Project</p>
     </div>
 
-    <script>
-        window.addEventListener('load', function () {
-            if (window.ethereum) {
-                window.web3 = new Web3(ethereum);
-                try {
-                    ethereum.enable();
-                } catch (error) {
-                    console.log("User denied account access.")
-                }
-            } else if (window.web3) {
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                console.log('Non-Ethereum browser detected. Consider installing MetaMask!');
-            }
-
-            var contractAddress = 'CONTRACT_ADDRESS';
-            var ABI = ABI_DEFINITION;
-            var contract = new web3.eth.Contract(ABI, contractAddress);
-
-            document.getElementById('claimButton').addEventListener('click', function() {
-                web3.eth.getAccounts().then(function(accounts) {
-                    contract.methods.claimToken().send({from: accounts[0]})
-                        .on('transactionHash', function(hash){
-                            console.log('Transaction Hash:', hash);
-                        })
-                        .on('confirmation', function(confirmationNumber, receipt){
-                            console.log('Confirmation Number:', confirmationNumber);
-                            console.log('Receipt:', receipt);
-                        })
-                        .on('error', console.error);
-                });
-            });
-        });
-    </script>
+    <!-- ... your JavaScript here ... -->
 </body>
 </html>
