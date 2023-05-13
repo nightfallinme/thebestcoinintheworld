@@ -5,74 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blockchain Token Project</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
+   <style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #000033;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        color: #333333; /* Dark grey text color */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #ffffff; /* White background */
+    }
 
-        .header, .footer {
-            background-color: #800000;
-            text-align: center;
-            padding: 20px;
-            width: 80%;
-        }
+    .header, .footer {
+        background-color: #007BFF; /* Bright blue header and footer */
+        color: #ffffff; /* White text in header and footer */
+        text-align: center;
+        padding: 20px;
+        width: 80%;
+    }
 
-        .content {
-            background-color: #000033;
-            padding: 20px;
-            width: 80%;
-            text-align: center;
-        }
+    .content {
+        background-color: #ffffff; /* White background for content */
+        padding: 20px;
+        width: 80%;
+        text-align: center;
+    }
 
-        .content h2, .content p {
-            margin-bottom: 20px;
-        }
+    .content h2, .content p {
+        margin-bottom: 20px;
+    }
 
-        @media screen and (max-width: 600px) {
-            .content, .header, .footer {
-                padding: 10px;
-                width: 90%;
-            }
+    @media screen and (max-width: 600px) {
+        .content, .header, .footer {
+            padding: 10px;
+            width: 90%;
         }
+    }
 
-        #claimButton {
-            background: none;
-            border: none;
-        }
+    #claimButton {
+        background: none;
+        border: none;
+    }
 
-        .coin {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            background-image: url('path/to/your/coin/image.png');
-            background-size: cover;
-            animation: coinFall 3s linear infinite;
-        }
+    .coin {
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        background-image: url('/image.png');
+        background-size: cover;
+        animation: coinFall 3s linear infinite;
+    }
 
-        @keyframes coinFall {
-            0% {
-                top: -30px;
-                left: calc(100vw * var(--random-left));
-                animation-timing-function: cubic-bezier(var(--random-bezier), var(--random-bezier), var(--random-bezier), var(--random-bezier));
-            }
-            100% {
-                top: calc(100vh + 30px);
-            }
+    @keyframes coinFall {
+        0% {
+            top: -30px;
+            left: calc(100vw * var(--random-left));
+            animation-timing-function: cubic-bezier(var(--random-bezier), var(--random-bezier), var(--random-bezier), var(--random-bezier));
         }
-    </style>
+        100% {
+            top: calc(100vh + 30px);
+        }
+    }
+</style>
+
 </head>
 <body>
     <div class="header">
