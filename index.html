@@ -143,7 +143,10 @@
     }
 
     .story .text {
-        flex: 1 0 auto;
+    flex: 1 0 auto;
+    max-width: 100%; /* Ensures the text doesn't go beyond its parent's width */
+    word-wrap: break-word; /* To ensure long words/URLs don't cause overflow */
+    padding-right: 20px; /* Add some padding if needed */
     }
 </style>
 
