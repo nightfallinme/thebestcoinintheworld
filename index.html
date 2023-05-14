@@ -126,19 +126,22 @@
         }
     }
     .story {
-    display: block;
+    display: flex;
+    align-items: center;
     }
 
     .story .image {
-    float: left;
-    margin-right: 20px;
+    order: 2;
+    margin-left: 20px;
+    margin-right: 0;
     margin-bottom: 20px;
     }
 
     .story .text {
-    display: block;
+    order: 1;
     overflow: auto; /* Ensures that text completely clears the floated image */
     }
+
    
 </style>
 
