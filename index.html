@@ -134,6 +134,26 @@
                 top: calc(100vh + 30px);
             }
         }
+        .story {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text {
+            flex: 1;
+            margin-right: 20px; /* You can adjust this value */
+        }
+
+        .image {
+            flex: 1;
+            margin-left: 20px; /* You can adjust this value */
+        }
+
+        .image img {
+            max-width: 100%; /* This will ensure the image is not bigger than its container */
+            height: auto; /* This will maintain the aspect ratio of the image */
+        }
 
 
     </style>
@@ -158,10 +178,7 @@
 
     <div class="content">
         <!-- ... your content here ... -->
-        
-        
-        <div class="story">
-         
+    <div class="story">
     <div class="text">
         <p>In an age long past, when the digital realm of the blockchain was still a vast, uncharted expanse, there existed two companions, Jack and Kyle. These were not ordinary wanderers; they were developers, architects of code, etching their vision into the indelible fabric of the blockchain. Their quest was nothing short of monumental - to birth the most exemplary coin the world had ever seen.</p>
 
@@ -175,8 +192,7 @@
     </div>
     <div class="image">
             <img src="./3szsDrzWBwDUCp5leeFy--1--xil8m.jpg" alt="Image related to the story">
-        </div>   
-        
+        </div>
     </div>
         <h2>Claim your token</h2>
         <button id="claimButton">
