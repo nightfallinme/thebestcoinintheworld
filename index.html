@@ -95,9 +95,11 @@
 
 </head>
 <body>
+    <div class="navbar">
     <div class="header">
         <h1>Blockchain Token Project</h1>
     </div>
+</div>
 
     <div class="content">
         <!-- ... your content here ... -->
@@ -159,6 +161,17 @@
                 });
             }, 3000);  // Adjust based on your animation duration
         }
+        // Hide header on scroll down
+    let previousScrollPosition = window.pageYOffset;
+    window.onscroll = function() {
+        let currentScrollPosition = window.pageYOffset;
+        if (previousScrollPosition > currentScrollPosition) {
+            document.querySelector('.navbar').style.top = "0";
+        } else {
+            document.querySelector('.navbar').style.top = "-50px";
+        }
+        previousScrollPosition = currentScrollPosition;
+    }
     </script>
 </body>
 </html>
