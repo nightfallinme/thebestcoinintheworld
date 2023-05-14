@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Best Coin in The World</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
     <style>
         /* Set box-sizing to border-box for all elements */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
-            color: #ffffff; /* White text color */
-            background-color: #1A1A1A; /* Dark grey background */
+            color: #ffffff;
+            /* White text color */
+            background-color: #1a1a1a;
+            /* Dark grey background */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,27 +34,61 @@
         .navbar {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             height: 60px;
-            transition: top 0.3s;
-            background-color: #1A1A1A; /* Dark grey navbar */
+            /* Adjust the height as needed */
+            background-color: #1a1a1a;
+            /* Dark grey navbar */
             z-index: 1000;
-        }
-
-        .navbar.hide {
-            top: -50px;
+            transition: transform 0.3s;
         }
 
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #0D0D0D; /* Darker grey header */
-            color: #E0E0E0; /* Lighter text in header */
+            background-color: #0d0d0d;
+            /* Darker grey header */
+            color: #e0e0e0;
+            /* Lighter text in header */
             padding: 20px;
-            width: 100%; /* Full width */
-            font-size: 1.2em; /* Slightly larger font */
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            font-size: 1.2em;
+            /* Slightly larger font */
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Subtle shadow for depth */
+            transition: transform 0.3s;
+        }
+
+        .navbar.hide .header {
+            transform: translateY(-100%) !important;
+        }
+
+        .navbar.hide {
+            transform: translateY(-100%) !important;
+        }
+
+        .return-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .navbar.hide~.return-to-top {
+            opacity: 1;
+        }
+
+        .return-to-top:hover {
+            opacity: 0.7;
+        }
+
+        .header h1 {
+            margin: 0;
         }
 
         .header nav {
@@ -56,53 +96,55 @@
         }
 
         .header nav a {
-            color: #E0E0E0; /* Same color as header text */
-            text-decoration: none; /* Removes the underline */
+            color: #e0e0e0;
+            /* Same color as header text */
+            text-decoration: none;
+            /* Removes the underline */
             margin-left: 20px;
         }
 
         .header nav a:hover {
-            color: #ffffff; /* Changes color when hovered */
+            color: #ffffff;
+            /* Changes color when hovered */
         }
 
-        .logo {
-            margin-right: 10px; /* Creates some space between the logo and the title */
+        .header .logo {
+            margin-right: 10px;
+            /* Creates some space between the logo and the title */
         }
+
 
         #logo {
-            height: 50px; /* Adjust as needed */
-            width: 50px; /* Adjust as needed */
+            height: 50px;
+            /* Adjust as needed */
+            width: 50px;
+            /* Adjust as needed */
         }
 
         .footer {
-            background-color: #1A1A1A; /* Dark grey header and footer */
-            color: #ffffff; /* White text in header and footer */
+            background-color: #1a1a1a;
+            /* Dark grey header and footer */
+            color: #ffffff;
+            /* White text in header and footer */
             text-align: center;
             padding: 20px;
-            width: 100%; /* Full width */
+            width: 100%;
+            /* Full width */
         }
 
         .content {
-            margin-top: 160px; /* Adjusted top margin to accommodate the navbar height */
-            background-color: #1A1A1A; /* Dark grey background for content */
-            padding: 20px;
-            width: 90%; /* Full width */
-            margin-left: auto; /* Center the content */
-            margin-right: auto; /* Center the content */
-            display: flex; /* Added flex display */
-            flex-wrap: wrap; /* Allow wrapping of content */
-            justify-content: center; /* Center the items horizontally */
-            align-items: flex-start; /* Align items to the top */
-        }
-
-        .content p {
-            font-size: 1.1em; /* Increased font size */
-            line-height: 1.6; /* Better readability */
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* More professional font */
-            text-align: justify; /* Justified text */
-            margin: 10px; /* Added margin for spacing */
-            flex: 1 1 100%; /* Adjusted flex properties */
+            margin-top: 260px;
+            background-color: #1a1a1a;
+            padding: 180px 20px 10px 20px;
+            /* Left and right padding are both now 20px */
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: center;
         }
 
         #claimButton {
@@ -119,7 +161,7 @@
             position: fixed;
             width: 30px;
             height: 30px;
-            background-image: url('path/to/your/coin/image.png');
+            background-image: url("path/to/your/coin/image.png");
             background-size: cover;
             animation: coinFall 3s linear infinite;
         }
@@ -128,140 +170,292 @@
             0% {
                 top: -30px;
                 left: calc(100vw * var(--random-left));
-                animation-timing-function: cubic-bezier(var(--random-bezier), var(--random-bezier), var(--random-bezier), var(--random-bezier));
+                animation-timing-function: cubic-bezier(var(--random-bezier),
+                        var(--random-bezier),
+                        var(--random-bezier),
+                        var(--random-bezier));
             }
+
             100% {
                 top: calc(100vh + 30px);
             }
         }
+
         .story {
+            width: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
         }
 
         .text {
             flex: 1;
-            margin-right: 20px; /* You can adjust this value */
+            margin-right: 20px;
+            overflow-y: auto;
+            max-height: 100%;
         }
 
         .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
             flex: 1;
-            margin-left: 20px; /* You can adjust this value */
+            margin-left: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
         .image img {
-            max-width: 100%; /* This will ensure the image is not bigger than its container */
-            height: auto; /* This will maintain the aspect ratio of the image */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
 
+        .claim-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center align items vertically */
+            justify-content: center;
+            /* Center align items horizontally */
+            width: 100%;
+            /* Full width */
+            padding: 20px;
+            /* Some padding */
+        }
+
+        .section:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 100%;
+            /* Set width as per your requirement */
+            height: 1px;
+            /* Set height as per your requirement */
+            margin: 20px 0;
+            /* Adjust margin as needed */
+            background-color: #ffffff;
+            /* Adjust color as needed */
+        }
+
+        .text {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .text p:first-child {
+            margin-top: 0;
+        }
+
+        .text p:last-child {
+            margin-bottom: 0;
+        }
     </style>
-
-
-
-
-
 </head>
-  
+
 <body>
     <div class="navbar">
-    <div class="header">
-        <img src="./tribute2w.png" alt="Logo" id="logo">
-        <h1 style="margin-left: 10px;">The Best Coin in The World</h1>
-        <nav>
-        <a href="#story">Story</a>
-        <a href="#claim">Claim Your Token</a>
-    </nav>
+        <div class="header">
+            <img src="./tribute2w.png" alt="Logo" id="logo" />
+            <h1 style="margin-left: 10px">The Best Coin in The World</h1>
+            <nav>
+                <a href="#story">Story</a>
+                <a href="#claim">Claim Your Token</a>
+            </nav>
+        </div>
+        <a href="#" class="return-to-top">Return to Top</a>
     </div>
-</div>
 
     <div class="content">
-        <!-- ... your content here ... -->
-    <div class="story">
-    <div class="text">
-        <p>In an age long past, when the digital realm of the blockchain was still a vast, uncharted expanse, there existed two companions, Jack and Kyle. These were not ordinary wanderers; they were developers, architects of code, etching their vision into the indelible fabric of the blockchain. Their quest was nothing short of monumental - to birth the most exemplary coin the world had ever seen.</p>
+        <div class="section">
+            <!-- ... your content here ... -->
+            <div class="story">
+                <div class="text">
+                    <p>
+                        In an age long past, when the digital realm of the blockchain was
+                        still a vast, uncharted expanse, there existed two companions, Jack
+                        and Kyle. These were not ordinary wanderers; they were developers,
+                        architects of code, etching their vision into the indelible fabric
+                        of the blockchain. Their quest was nothing short of monumental - to
+                        birth the most exemplary coin the world had ever seen.
+                    </p>
 
-        <p>On an eve of destiny, under the spectral glow of countless lines of code, they toiled in a marathon of creation. The room, bathed in the harsh, electric blue light, was a crucible where something extraordinary was taking shape. Abruptly, from the tangled labyrinth of their screens, a figure began to emerge. It was a luminous, holographic manifestation of the elusive entity known only as Satoshi Nakamoto.</p>
+                    <p>
+                        On an eve of destiny, under the spectral glow of countless lines of
+                        code, they toiled in a marathon of creation. The room, bathed in the
+                        harsh, electric blue light, was a crucible where something
+                        extraordinary was taking shape. Abruptly, from the tangled labyrinth
+                        of their screens, a figure began to emerge. It was a luminous,
+                        holographic manifestation of the elusive entity known only as
+                        Satoshi Nakamoto.
+                    </p>
 
-        <p>The figure spoke in cryptic riddles and complex equations, guiding their hands and minds to the climax of their creation. In the chilling silence that followed, the glow from their screens cast long shadows across their awestruck faces. They had done it. They had created the paragon of digital currency.</p>
+                    <p>
+                        The figure spoke in cryptic riddles and complex equations, guiding
+                        their hands and minds to the climax of their creation. In the
+                        chilling silence that followed, the glow from their screens cast
+                        long shadows across their awestruck faces. They had done it. They
+                        had created the best coin the world had ever seen.
+                    </p>
 
-        <p>However, if you dare to ask Jack and Kyle to recount the tale of the greatest coin in the world, they might falter. For the exact specifics have faded with time, blurred by the excitement of invention and the exhaustion of their endeavor. Yet, they will assure you of one thing: it wasn't just the most extraordinary coin in the world, it was a tribute. A tribute to the limitless potential of the blockchain, a homage to the power of human ingenuity.</p>
+                    <p>
+                        However, if you dare to ask Jack and Kyle to recount the tale of the
+                        best coin in the world, they might falter. The exact specifics have faded with time, blurred by
+                        the excitement of
+                        invention and the exhaustion of their endeavor. What was once considered the best coin in the
+                        world now existed as a hazy memory, its details elusive and faint.
+                    </p>
 
-        <p>And that coin, that gleaming testament to their quest, was merely the opening chapter of their grand adventure. An adventure that, even now, is only just beginning.</p>
-    </div>
-    <div class="image">
-            <img src="./3szsDrzWBwDUCp5leeFy--1--xil8m.jpg" alt="Image related to the story">
+                    <p>
+                        Yet, they will assure you of one thing: while it may no longer hold the title of the best coin
+                        in the world, it remains a powerful tribute. A tribute to the limitless potential
+                        of the blockchain, a homage to the power of human ingenuity. A tribute to their relentless quest
+                        and the extraordinary journey they had embarked on.
+                    </p>
+
+                    <p>
+                        And that coin, that gleaming testament to their quest, was merely
+                        the opening chapter of their grand adventure. An adventure that,
+                        even now, is only just beginning.
+                    </p>
+
+                </div>
+                <div class="image">
+                    <img src="./3szsDrzWBwDUCp5leeFy--1--xil8m.jpg" alt="Image related to the story" />
+                </div>
+            </div>
+
         </div>
-    </div>
-        <h2>Claim your token</h2>
-        <button id="claimButton">
-            <img src="./image.png" alt="Claim Token"/>
-        </button>
-    </div>
+        <div class="section">
+            <div class="claim-section">
 
-    <div class="footer">
-        <p>&copy; 2023 Blockchain Token Project</p>
-    </div>
+                <h2>Claim your token</h2>
+                <button id="claimButton">
+                    <img src="./image.png" alt="Claim Token" />
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2023 Blockchain Token Project</p>
+        </div>
 
         <!-- ... Rest of your HTML ... -->
-    <script>
-        window.addEventListener('load', function () {
-            if (window.ethereum) {
-                window.web3 = new Web3(ethereum);
-                try {
-                    ethereum.enable();
-                } catch (error) {
-                    console.log("User denied account access.")
+        <script>
+            window.addEventListener("load", function () {
+                if (window.ethereum) {
+                    window.web3 = new Web3(ethereum);
+                    try {
+                        ethereum.enable();
+                    } catch (error) {
+                        console.log("User denied account access.");
+                    }
+                } else if (window.web3) {
+                    window.web3 = new Web3(web3.currentProvider);
+                } else {
+                    console.log("Non-Ethereum browser detected. Consider installing MetaMask!");
                 }
-            } else if (window.web3) {
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                console.log('Non-Ethereum browser detected. Consider installing MetaMask!');
-            }
 
-            var contractAddress = 'CONTRACT_ADDRESS';
-            var ABI = ABI_DEFINITION;
-            var contract = new web3.eth.Contract(ABI, contractAddress);
+                var contractAddress = "CONTRACT_ADDRESS";
+                var ABI = ABI_DEFINITION;
+                var contract = new web3.eth.Contract(ABI, contractAddress);
 
-            document.getElementById('claimButton').addEventListener('click', function() {
-                web3.eth.getAccounts().then(function(accounts) {
-                    contract.methods.claimToken().send({from: accounts[0]})
-                    .on('transactionHash', function(hash){
-                        createCoinRain();
-                    })
-                    .on('error', console.error);
+                document.getElementById("claimButton").addEventListener("click", function () {
+                    web3.eth.getAccounts().then(function (accounts) {
+                        contract.methods
+                            .claimToken()
+                            .send({ from: accounts[0] })
+                            .on("transactionHash", function (hash) {
+                                createCoinRain();
+                            })
+                            .on("error", console.error);
+                    });
+                });
+
+                let previousScrollPosition = window.pageYOffset;
+                const navbar = document.querySelector(".navbar");
+                const returnToTopButton = document.querySelector(".return-to-top");
+
+                window.addEventListener("scroll", function () {
+                    const currentScrollPosition = window.pageYOffset;
+
+                    if (currentScrollPosition > previousScrollPosition) {
+                        navbar.style.transform = "translateY(-100%)";
+                        navbar.classList.add("hide");
+                    } else {
+                        navbar.style.transform = "translateY(0)";
+                        navbar.classList.remove("hide");
+                    }
+
+                    previousScrollPosition = currentScrollPosition;
+                });
+                window.addEventListener("wheel", function (event) {
+                    const currentScrollPosition = window.pageYOffset;
+                    const viewportSize = {
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                    };
+                    const scrollSpeed = event.deltaY;
+                    const scrollDirection = scrollSpeed > 0 ? "down" : "up";
+
+                    if (
+                        currentScrollPosition > previousScrollPosition &&
+                        scrollSpeed > 0 &&
+                        scrollDirection === "down"
+                    ) {
+                        navbar.style.transform = "translateY(-100%)";
+                        navbar.classList.add("hide");
+                    } else if (
+                        currentScrollPosition < previousScrollPosition &&
+                        scrollSpeed < 0 &&
+                        scrollDirection === "up"
+                    ) {
+                        navbar.style.transform = "translateY(0)";
+                        navbar.classList.remove("hide");
+                    }
+
+                    previousScrollPosition = currentScrollPosition;
+                });
+                returnToTopButton.addEventListener("click", function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
                 });
             });
-        });
 
-        function createCoinRain() {
-            // Create 100 coins
-            for (let i = 0; i < 100; i++) {
-                const coin = document.createElement('div');
-                coin.className = 'coin';
-                document.body.appendChild(coin);
+            function createCoinRain() {
+                // Create 100 coins
+                for (let i = 0; i < 100; i++) {
+                    const coin = document.createElement("div");
+                    coin.className = "coin";
+                    document.body.appendChild(coin);
+                }
+
+                // Remove coins after the animation ends
+                setTimeout(function () {
+                    const coins = document.querySelectorAll(".coin");
+                    coins.forEach(function (coin) {
+                        coin.remove();
+                    });
+                }, 3000); // Adjust based on your animation duration
             }
 
-            // Remove coins after the animation ends
-            setTimeout(function() {
-                const coins = document.querySelectorAll('.coin');
-                coins.forEach(function(coin) {
-                    coin.remove();
-                });
-            }, 3000);  // Adjust based on your animation duration
-        }
-        // Hide header on scroll down
-    let previousScrollPosition = window.pageYOffset;
-    window.onscroll = function() {
-        let currentScrollPosition = window.pageYOffset;
-        if (previousScrollPosition > currentScrollPosition) {
-            document.querySelector('.navbar').style.top = "0";
-        } else {
-            document.querySelector('.navbar').style.top = "-50px";
-        }
-        previousScrollPosition = currentScrollPosition;
-    }
-    </script>
+        </script>
 </body>
+
 </html>
