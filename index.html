@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blockchain Token Project</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
-   <style>
+<style>
     * {
         box-sizing: border-box;
         padding: 0;
@@ -14,17 +14,29 @@
 
     body {
         font-family: Arial, sans-serif;
-        color: #333333; /* Dark grey text color */
+        color: #ffffff; /* White text color */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
-        background-color: #ffffff; /* White background */
+        background-color: #1A1A1A; /* Dark grey background */
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        transition: top 0.3s;
+        background-color: #1A1A1A; /* Dark grey navbar */
+    }
+
+    .navbar.hide {
+        top: -50px;
     }
 
     .header, .footer {
-        background-color: #007BFF; /* Bright blue header and footer */
+        background-color: #1A1A1A; /* Dark grey header and footer */
         color: #ffffff; /* White text in header and footer */
         text-align: center;
         padding: 20px;
@@ -32,7 +44,7 @@
     }
 
     .content {
-        background-color: #ffffff; /* White background for content */
+        background-color: #1A1A1A; /* Dark grey background for content */
         padding: 20px;
         width: 80%;
         text-align: center;
@@ -58,11 +70,12 @@
     #claimButton:hover {
         transform: scale(1.1);
     }
+
     .coin {
         position: fixed;
         width: 30px;
         height: 30px;
-        background-image: url('./docs/assets/images/image.png');
+        background-image: url('path/to/your/coin/image.png');
         background-size: cover;
         animation: coinFall 3s linear infinite;
     }
@@ -78,6 +91,7 @@
         }
     }
 </style>
+
 
 </head>
 <body>
