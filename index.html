@@ -134,19 +134,19 @@
     gap: 20px; /* Space between the text and image */
     }
 
+    .story {
+    display: block;
+    }
+
     .story .image {
-    flex: 1 1 400px; /* Grow, shrink and basis */
-    max-width: 50%; /* Up to half of the container */
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
     }
 
     .story .text {
-    flex: 1 1 400px; /* Grow, shrink and basis */
-    max-width: 50%; /* Up to half of the container */
-    }
-
-    @media screen and (max-width: 800px) {
-    .story .image, .story .text {
-        max-width: 100%; /* Full width on small screens */
+    display: block;
+    overflow: auto; /* Ensures that text completely clears the floated image */
     }
 }
    
