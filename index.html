@@ -43,7 +43,7 @@
     .content {
         background-color: #1A1A1A; /* Dark grey background for content */
         padding: 20px;
-        width: 78%; /* Full width */
+        width: 100%; /* Full width */
         text-align: center;
     }
 
@@ -80,12 +80,34 @@
             top: calc(100vh + 30px);
         }
     }
+    .story {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 20px; /* Space between the text and image */
+    }
+
+    .story .text, .story .image {
+        flex: 1; /* Each takes up half of the available space */
+    }
+
+    .story img {
+        max-width: 100%; /* Image doesn't overflow its container */
+        height: auto; /* Maintain aspect ratio */
+    }
 
     @media screen and (max-width: 600px) {
-        .content, .header, .footer {
-            padding: 10px;
+        /* On small screens, text and image stack vertically */
+        .story {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .story .text, .story .image {
+            width: 100%; /* Each takes up the full width */
         }
     }
+   
 </style>
 
 
@@ -100,7 +122,22 @@
 
     <div class="content">
         <!-- ... your content here ... -->
+        <div class="story">
+        <div class="text">
+            <h2>The Best Coin in The World</h2>
+            <p>A long time ago, two friends, Jack and Kyle, roamed the vast landscape of the blockchain industry. They were developers, but not just any developers - they were on a quest to create the best coin in the world.</p>
 
+            <p>One fateful night, they found themselves in the middle of a coding marathon, their screens illuminating their faces in the dimly lit room. Suddenly, a figure appeared on their screens, emerging from the depths of the blockchain. It was a shiny, holographic figure of an entity known as Satoshi Nakamoto.</p>
+
+            <!-- Rest of the story here... -->
+
+            <p>And to this day, if you ask Jack and Kyle to tell you about the greatest coin in the world, they might not remember all the details. But they can tell you this: it wasn't just the best coin in the world, it was a tribute to the limitless potential of blockchain technology and the power of human ingenuity. And it was the key to their adventure, an adventure that was still only just beginning.</p>
+        </div>
+
+        <div class="image">
+            <img src="./image.jpg" alt="Image related to the story">
+        </div>
+    </div>
         <h2>Claim your token</h2>
         <button id="claimButton">
             <img src="./image.png" alt="Claim Token"/>
