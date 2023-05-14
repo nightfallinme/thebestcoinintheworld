@@ -132,26 +132,28 @@
     }
 
     .story {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 20px 0; /*Added for better spacing*/
-    }
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between;
+    margin: 20px 0; /* Added for better spacing */
+}
 
     .story .image {
-        flex: 1 0 auto;
-        max-width: 100%;
-        margin-left: 20px;
-        margin-bottom: 20px;
-        border-radius: 20px; /* Adjust as needed */
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Adds shadow */
-    }
+    flex: 0 0 300px; /* Adjust the width of the image container */
+    max-width: 100%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px; /* Adjust as needed */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Adds shadow */
+}
+
     .story .text {
     flex: 1 0 auto;
-    max-width: 600px; /* Adjust the value as needed */
+    max-width: calc(100% - 340px); /* Adjust the value based on the image width and margin */
     word-wrap: break-word; /* To ensure long words/URLs don't cause overflow */
     padding-right: 20px; /* Add some padding if needed */
 }
+
    
 </style>
 
