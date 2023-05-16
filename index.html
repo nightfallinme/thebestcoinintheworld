@@ -189,12 +189,13 @@
 
         .section:not(:last-child)::after {
             content: '';
+
             display: block;
-            width: 100%;
+            width: 50%;
             /* Set width as per your requirement */
             height: 1px;
             /* Set height as per your requirement */
-            margin: 20px 0;
+            margin: 20px auto;
             /* Adjust margin as needed */
             background-color: #ffffff;
             /* Adjust color as needed */
@@ -381,7 +382,7 @@
         </div>
         <div class="section" id="claim">
             <div class="claim-section">
-                <img style="width: 20%;height: 20%;border-radius: 20px;" src="./eth.jpg"
+                <img style="width: 20%;height: 20%;border-radius: 20px; margin-top: 20px;" src="./eth.jpg"
                     alt="Image related to the story" />
 
                 <div class="claim-story">
@@ -696,12 +697,94 @@
 
     </div>
     <div class="section" id="roadmap">
-        <h2 class="section-heading">Roadmap</h2>
-        <!-- Add your Roadmap content here -->
+        <div style="background-color: #1a1a1a; color: #ffffff; padding: 80px 0;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 32px; font-weight: bold; margin-bottom: 40px;">Roadmap</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+                    <div class="roadmap-item completed">
+                        <div class="roadmap-icon">
+                            <span class="checkmark"></span>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: bold; margin-top: 20px;">Phase 1</h3>
+                        <p style="font-size: 18px;">Create token contract and airdrop contract. Launch website.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <span class="sandglass"></span>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: bold; margin-top: 20px;color: #777777">Phase 2</h3>
+                        <p style="font-size: 18px; color: #777777;">Create a community, with honest holders.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <span class="sandglass"></span>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: bold; margin-top: 20px;color: #777777">Phase 3</h3>
+                        <p style="font-size: 18px; color: #777777;">If we have enough community start working on a Best
+                            DAO
+                            in
+                            The World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .roadmap-item {
+                flex-basis: 300px;
+                position: relative;
+                background-color: #f5f5f5;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .roadmap-item.completed {
+                background-color: #ff8a80;
+            }
+
+            .roadmap-icon {
+                position: absolute;
+                top: -20px;
+                left: calc(50% - 15px);
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                border-radius: 50%;
+            }
+
+            .checkmark::before {
+                content: '\2713';
+            }
+
+            .sandglass::before {
+                content: '\231B';
+            }
+        </style>
     </div>
     <div class="section" id="contact">
-        <h2 class="section-heading">Contact</h2>
-        <!-- Add your Contact content here -->
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 32px; font-weight: bold; margin-bottom: 40px;">Contact Us</h2>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <a href="https://twitter.com/your_twitter" target="_blank"
+                    style="text-decoration: none; color: #ffffff;">
+                    <i class="fab fa-twitter fa-2x"></i>
+                    <span style="font-size: 18px; font-weight: bold;">Twitter</span>
+                </a>
+                <a href="https://t.me/your_telegram" target="_blank" style="text-decoration: none; color: #ffffff;">
+                    <i class="fab fa-telegram fa-2x"></i>
+                    <span style="font-size: 18px; font-weight: bold;">Telegram</span>
+                </a>
+                <a href="https://etherscan.io/address/your_contract_address" target="_blank"
+                    style="text-decoration: none; color: #ffffff;">
+                    <i class="fa-brands fa-ethereum fa-2x"></i>
+                    <span style="font-size: 18px; font-weight: bold;">Contract</span>
+                </a>
+            </div>
+        </div>
+        <script src="https://kit.fontawesome.com/17381ddf1c.js" crossorigin="anonymous"></script>
     </div>
 
     <div class="footer">
