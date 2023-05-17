@@ -7,7 +7,6 @@
     <title>The Best Coin in The World</title>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.3.4/dist/web3.min.js"></script>
     <style>
-        /* Set box-sizing to border-box for all elements */
         *,
         *::before,
         *::after {
@@ -164,7 +163,7 @@
 
         .header .logo {
             margin-right: 10px;
-            /* Creates some space between the logo and the title */
+
         }
 
         @media (max-width: 600px) {
@@ -175,9 +174,9 @@
 
         #logo {
             height: 50px;
-            /* Adjust as needed */
+
             width: 50px;
-            /* Adjust as needed */
+
         }
 
         .image img {
@@ -192,13 +191,13 @@
 
             display: block;
             width: 50%;
-            /* Set width as per your requirement */
+
             height: 1px;
-            /* Set height as per your requirement */
+
             margin: 20px auto;
-            /* Adjust margin as needed */
+
             background-color: #ffffff;
-            /* Adjust color as needed */
+
         }
 
 
@@ -257,10 +256,10 @@
     <div class="navbar">
         <div class="header">
             <img src="./tribute2w.png" alt="Logo" id="logo" />
-            <h1 style="margin-left: 10px">The Best Coin in The World</h1>
+            <h1 style="margin-left: 10px">Tribute ($TBC) - The Best Coin in The World</h1>
             <nav>
                 <a href="#story">Story</a>
-                <a href="#claim">Claim</a>
+                <a href="#claim">Buy</a>
                 <a href="#faq">FAQ</a>
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
@@ -344,8 +343,10 @@
                         all who dared
                         venture into the realm of the blockchain. Yet, this was no ordinary coin. It was a masterpiece
                         of code, a testament
-                        to human ingenuity, and it bore a unique, enigmatic trait: a curse known as "The Curse of the
-                        Weak Hands".</p>
+                        to human ingenuity, and it bore a unique, enigmatic trait, a curse known as: </p>
+                    <p style="text-align:right"><b>"The Curse of
+                            the
+                            Weak Hands"</b>.</p>
 
                     <p>This curse was an intricate part of the coin's design, imprinted deep within its indelible
                         blockchain fabric.
@@ -410,27 +411,30 @@
 
                     <p
                         style="font-style: italic;font-size: 10;font-family: Georgia, 'Times New Roman', Times, serif;color: darkgray;">
-                        Claim your token, join our story.</p>
+                        BUY $TBC, join our story. Road to the best coin in the world.</p>
                 </div>
             </div>
-            <h2 style="text-align: center;">Claim your token just by showing your ETH</h2>
             <div style="display: flex; justify-content: center;">
-                <button id="claimButton" class="claim-button">
+                <button id="claimButton" class="claim-button" onclick="buyToken()">
                     <img style="width: 100px; height: 100px;margin-bottom: 60px;margin-top: 20px;" src="./tribute2w.png"
-                        alt="Claim Token" />
+                        alt="BUY TRIBUTE" />
                 </button>
 
+                <script>
+                    function buyToken() {
+
+                        var tokenAddress = "0x1234567890ABCDEF";
+
+
+                        var uniswapURL = "https://app.uniswap.org/#/swap?inputCurrency=" + tokenAddress;
+
+
+                        window.open(uniswapURL, "_blank");
+                    }
+                </script>
+
             </div>
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <p
-                    style="text-align: center; width: 50%; font-style: italic; font-size: 10; font-family: Georgia, 'Times New Roman', Times, serif; color: darkgray;">
-                    This is a free airdrop but You need to have at least 0.1 ETH in your wallet to be eligible for
-                    claiming. If you
-                    hold 10 or more ETH, you will be able to claim the maximum amount of tokens claimable for an
-                    address. For security concerns, as you try to transact you will see this is not a spender contract
-                    it cant use ur ETH, this is just to take Tribute airdrop.
-                </p>
-            </div>
+
 
         </div>
         <div class="section" id="faq">
@@ -515,26 +519,7 @@
                                 rules do not impact their
                                 withdrawals and transactions, allowing us to easily comply with their regulations.</div>
                         </div>
-                        <div class="faq-item">
 
-                            <div class="question">Question: How can I claim my Tribute tokens?</div>
-                            <div class="answer">
-                                Answer: To <a href="#claim">claim</a> Tribute tokens, you need to have at least 0.1 ETH
-                                in
-                                your wallet. If you hold 10 or more ETH, you
-                                will be able to claim the maximum amount of tokens claimable for an address.
-                                Additionally, a limited allocation of
-                                7% of the total supply is being airdropped to ETH holders. Please note that the
-                                airdrop is limited to the total
-                                allocated amount and will be distributed on a first-come, first-served basis. Each
-                                address can only claim the
-                                airdrop once. Make sure
-                                to have sufficient gas fees and use a compatible wallet that supports the Tribute
-                                token
-                            </div>
-
-
-                        </div>
                         <div class="faq-item">
                             <div class="question">Question: What is the total supply of Tribute tokens?</div>
                             <div class="answer">Answer: The total supply of Tribute tokens is 42 billion, inspired by
@@ -589,7 +574,25 @@
                                 with a fair voting mechanism.
                             </div>
                         </div>
-                        <!-- Add more FAQ items here -->
+                        <div class="faq-item">
+                            <div class="question">Question: Who is developing this token?</div>
+                            <div class="answer">
+                                Answer: This token is the labor of love and resilience by a single, hobbyist Solidity
+                                developer who found
+                                strength in adversity. I was faced with the devastating loss of my life savings and home
+                                due to a severe
+                                earthquake in Turkey. It was a chapter of hardship and despair. But amidst the rubble, I
+                                found a spark of hope
+                                and determination. That's when THE BEST COIN IN THE WORLD was born. During these
+                                challenging times, I had
+                                moments of solitude which gave me a chance to create and contribute something to the
+                                world. This token is more
+                                than just a project for me; it's a testament to human resilience and the will to rise
+                                even when the odds are
+                                against you.
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -639,35 +642,33 @@
                     text-align: justify;
                 }
             </style>
-            <h2 class="section-heading">Tokenomics</h2>
-            <div class="chart-container">
-                <canvas id="myChart"></canvas>
-                <div class="chart-legend">
-                    <ul>
-                        <li>
-                            <span class="legend-color" style="background-color: #ff0000;"></span>
-                            <span class="legend-label">Developer</span>
-                            <span class="legend-info">7% - Allocation for developers and team members.</span>
-                        </li>
-                        <li>
-                            <span class="legend-color" style="background-color: #00ff00;"></span>
-                            <span class="legend-label">Liquidity Creation</span>
-                            <span class="legend-info">86% - Reserved for liquidity creation (locked forever)</span>
-                        </li>
-                        <li>
-                            <span class="legend-color" style="background-color: #0000ff;"></span>
-                            <span class="legend-label">Airdrop</span>
-                            <span class="legend-info">7% - Airdropped to ETH holders.</span>
-                        </li>
-                    </ul>
+            <div class="section" id="tokenomics">
+                <h2 class="section-heading">Tokenomics</h2>
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                    <div class="chart-legend">
+                        <ul>
+                            <li>
+                                <span class="legend-color" style="background-color: #ff0000;"></span>
+                                <span class="legend-label">Developer</span>
+                                <span class="legend-info">7% - Allocation for developers and team members.</span>
+                            </li>
+                            <li>
+                                <span class="legend-color" style="background-color: #00ff00;"></span>
+                                <span class="legend-label">Liquidity Creation</span>
+                                <span class="legend-info">93% - Reserved for liquidity creation (locked forever)</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <script>
-            var data = [7, 86, 7];
-            var labels = ["Developer", "Liquidity Creation", "Airdrop"];
+            var data = [7, 93];
+            var labels = ["Developer", "Liquidity Creation"];
 
             var ctx = document.getElementById("myChart").getContext("2d");
             var myChart = new Chart(ctx, {
@@ -675,7 +676,7 @@
                 data: {
                     datasets: [{
                         data: data,
-                        backgroundColor: ["#ff0000", "#00ff00", "#0000ff"]
+                        backgroundColor: ["#ff0000", "#00ff00"]
                     }],
                     labels: labels
                 },
@@ -695,6 +696,7 @@
 
 
 
+
     </div>
     <div class="section" id="roadmap">
         <div style="background-color: #1a1a1a; color: #ffffff; padding: 80px 0;">
@@ -706,7 +708,7 @@
                             <span class="checkmark"></span>
                         </div>
                         <h3 style="font-size: 24px; font-weight: bold; margin-top: 20px;">Phase 1</h3>
-                        <p style="font-size: 18px;">Create token contract and airdrop contract. Launch website.</p>
+                        <p style="font-size: 18px;">Create token contract. Launch website.</p>
                     </div>
                     <div class="roadmap-item">
                         <div class="roadmap-icon">
@@ -720,7 +722,8 @@
                             <span class="sandglass"></span>
                         </div>
                         <h3 style="font-size: 24px; font-weight: bold; margin-top: 20px;color: #777777">Phase 3</h3>
-                        <p style="font-size: 18px; color: #777777;">If we have enough community start working on a Best
+                        <p style="font-size: 18px; color: #777777;">If we have enough community start working on The
+                            Best
                             DAO
                             in
                             The World</p>
@@ -799,27 +802,43 @@
                 storytelling purposes only.</p>
         </div>
     </div>
+    <div id="player"></div>
+    <button onclick="playVideo()">Play</button>
+    <button onclick="pauseVideo()">Pause</button>
+
     <script>
-        window.addEventListener('load', function () {
-            // Check if Metamask is installed
-            if (typeof window.ethereum !== 'undefined') {
-                // Create the connect button
-                document.getElementById('connect-button').addEventListener('click', function () {
-                    // Connect to Metamask
-                    window.ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
-                        // Get the first account
-                        const account = accounts[0];
-                        // Do something with the account
-                        console.log(account);
-                    });
-                });
-            } else {
-                // Metamask is not installed, prompt the user to install it
-                alert('Please install MetaMask');
-            }
-        });
+        var player;
+
+        function onYouTubePlayerAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'xy5S8s6rTH0',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    loop: 1,
+                    playlist: 'xy5S8s6rTH0',
+                },
+                events: {
+                    onReady: onPlayerReady,
+                },
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.mute();
+        }
+
+        function playVideo() {
+            player.playVideo();
+        }
+
+        function pauseVideo() {
+            player.pauseVideo();
+        }
     </script>
-    <button id="connect-button">Connect Wallet</button>
 </body>
 
 </html>
