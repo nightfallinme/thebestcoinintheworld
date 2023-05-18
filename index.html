@@ -249,6 +249,56 @@
 
             text-align: justify;
         }
+
+        @media screen and (max-width: 900px) {
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .header nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .header nav a {
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+
+            .content {
+                padding: 60px 20px 10px 20px;
+            }
+
+            .story {
+                flex-direction: column;
+                padding-top: 20px;
+            }
+
+            .text,
+            .image {
+                margin: 0;
+            }
+
+            .image img {
+                width: 80%;
+                height: auto;
+            }
+
+            #logo {
+                height: 40px;
+                width: 40px;
+            }
+
+            .story-heading {
+                font-size: 20px;
+            }
+
+            .text p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -381,39 +431,41 @@
 
             </div>
         </div>
-        <div class="section" id="claim">
+        <div class="section" id="journey">
             <div class="claim-section">
-                <img style="width: 20%;height: 20%;border-radius: 20px; margin-top: 20px;" src="./eth.jpg"
-                    alt="Image related to the story" />
-
+                <img style="width: 20%; height: 20%; border-radius: 20px; margin-top: 20px;" src="./eth.jpg"
+                    alt="Image of the journey" />
                 <div class="claim-story">
-                    <p>In the depths of an ancient chamber, the adventurers' torches revealed a sight like no other.
-                        Amidst timeworn
-                        treasures, an age-old machine rested, enshrining a sack of Tribute, the legendary coin of tales
-                        untold.</p>
-
-                    <p>This mystical mechanism was more than a relic. It bore cryptic inscriptions hinting at its
-                        secret. "He who holds a
-                        luminous token of the ethereal kind may access the bounty within." The adventurers understood
-                        that a shiny coin was
-                        needed, but not just any coin. The Tribute was locked away, requiring a token that shimmered
-                        with an otherworldly
-                        quality.</p>
-
-                    <p>The adventurers, though weary, felt a surge of determination. They understood the challenge posed
-                        by the ancient
-                        device. The Tribute was within their grasp, but they needed to procure an exceptional token.</p>
-
-                    <p>The echo of their steps resonated in the ancient chamber as they resumed their quest, a single
-                        thought echoing in
-                        their minds - the Tribute was waiting, and the key to it shimmered somewhere in the shadows of
-                        the unknown.</p>
-
+                    <p>Guided by the whispers of the ancient, the adventurers embarked on their quest to secure the
+                        luminous
+                        token. Their path, shrouded in mystery, led them across the highest mountains and through the
+                        deepest
+                        valleys, with their resolve unbroken in the face of countless trials and tribulations.</p>
+                    <p>When the journey seemed most dire, they discovered a forgotten shrine, filled with echoes of the
+                        past. It
+                        was here that they found a parchment bearing the inscriptions of an ethereal coin - the luminous
+                        token
+                        they had been searching for. This token, created by a lone developer out of the ashes of
+                        devastation and
+                        hardship, was said to have the power to unlock unimaginable wealth.</p>
+                    <p>Strengthened by their discovery, they returned to the ancient chamber, holding the ethereal coin
+                        high in
+                        their hands. As it met with the light from their torches, it shimmered with a glow that
+                        reflected off
+                        the ancient walls, illuminating inscriptions that had previously remained hidden. It was the
+                        Tribute
+                        token, the key to the age-old machine. </p>
+                    <p>With newfound hope and determination, they used the token. The machine stirred to life, revealing
+                        the
+                        precious Tribute they had fought so hard to attain. And so, they became not only the bearers of
+                        the
+                        Tribute but the bearers of a new era. </p>
                     <p
                         style="font-style: italic;font-size: 10;font-family: Georgia, 'Times New Roman', Times, serif;color: darkgray;">
-                        BUY $TBC, join our story. Road to the best coin in the world.</p>
+                        BUY $TBC, continue our journey. Together, we can unlock the future.</p>
                 </div>
             </div>
+
             <div style="display: flex; justify-content: center;">
                 <button id="claimButton" class="claim-button" onclick="buyToken()">
                     <img style="width: 100px; height: 100px;margin-bottom: 60px;margin-top: 20px;" src="./tribute2w.png"
@@ -422,277 +474,272 @@
 
                 <script>
                     function buyToken() {
-
                         var tokenAddress = "0x1234567890ABCDEF";
-
-
                         var uniswapURL = "https://app.uniswap.org/#/swap?inputCurrency=" + tokenAddress;
-
-
                         window.open(uniswapURL, "_blank");
                     }
                 </script>
-
             </div>
-
-
         </div>
-        <div class="section" id="faq">
-            <style>
-                .faq-container {
-                    width: 100%;
-                    max-width: 800px;
-                    margin: 0 auto;
-                }
 
-                .faq {
-                    text-align: left;
-                }
 
-                .faq-item {
-                    margin-bottom: 20px;
-                }
+    </div>
+    <div class="section" id="faq">
+        <style>
+            .faq-container {
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
-                .question {
-                    font-weight: bold;
-                    font-size: 18px;
-                    display: block;
-                }
+            .faq {
+                text-align: left;
+            }
 
-                .answer {
-                    font-size: 16px;
-                    margin-top: 10px;
-                    line-height: 1.4;
-                }
+            .faq-item {
+                margin-bottom: 20px;
+            }
 
-                .faq-section {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 40px;
-                    background-color: #1a1a1a;
-                    color: #ffffff;
-                    border-radius: 8px;
-                }
+            .question {
+                font-weight: bold;
+                font-size: 18px;
+                display: block;
+            }
 
-                .section-heading {
-                    font-size: 24px;
-                    font-weight: bold;
-                    margin-bottom: 20px;
-                }
+            .answer {
+                font-size: 16px;
+                margin-top: 10px;
+                line-height: 1.4;
+            }
 
-                .faq-item {
-                    margin-bottom: 20px;
-                }
+            .faq-section {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 40px;
+                background-color: #1a1a1a;
+                color: #ffffff;
+                border-radius: 8px;
+            }
 
-                .question {
-                    font-weight: bold;
-                    font-size: 18px;
-                    text-align: left;
-                }
+            .section-heading {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
 
-                .answer {
-                    display: none;
-                    font-size: 16px;
-                    color: #e0e0e0;
-                }
+            .faq-item {
+                margin-bottom: 20px;
+            }
 
-                .faq-item.active .answer {
-                    display: block;
-                }
-            </style>
-            <div class="faq-section">
-                <h2 class="section-heading">Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <div class="question">Question: Is it safe to use Tribute token?</div>
-                            <div class="answer">Answer: The Tribute token is designed with security in mind. The token
-                                contract has been carefully
-                                audited and does not have any mint or abusable functions. The only function available is
-                                the
-                                Whitelist, which is
-                                used to add current and future liquidity pools. This ensures that buyers are not
-                                affected by
-                                diminishing tax fees.
-                                Additionally, the Whitelist function allows us to add exchange wallets, ensuring that
-                                tax
-                                rules do not impact their
-                                withdrawals and transactions, allowing us to easily comply with their regulations.</div>
-                        </div>
+            .question {
+                font-weight: bold;
+                font-size: 18px;
+                text-align: left;
+            }
 
-                        <div class="faq-item">
-                            <div class="question">Question: What is the total supply of Tribute tokens?</div>
-                            <div class="answer">Answer: The total supply of Tribute tokens is 42 billion, inspired by
-                                the
-                                famous phrase "The
-                                answer to life, the universe, and everything." In a playful homage to this concept, the
-                                token supply has been
-                                set to 42 billion. The Tribute ecosystem implements a deflationary mechanism through
-                                taxes.
-                                If non-burned (dead
-                                address) tokens reach 21 billion, which is half of the initial supply, the tax is
-                                completely
-                                removed. This means
-                                that the tax feature creates deflationary pressure until only 21 billion Tribute tokens
-                                are
-                                left in circulation.
-                                This design ensures the scarcity and value preservation of the remaining tokens.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="question">Question: How does the tax mechanism work?</div>
-                            <div class="answer">Answer: Whenever someone sends or receives Tribute tokens, a diminishing
-                                tax
-                                rate comes into
-                                effect. It starts with a total tax fee of 10% and gradually decreases to 0% if you can
-                                hold
-                                the tokens for 42
-                                hours. This mechanism, known as the "Curse of the Weak Hands," discourages short-term
-                                trading and promotes
-                                long-term holding. It also helps combat bots, as they would be subject to the maximum
-                                tax
-                                rate if they attempt
-                                to manipulate transactions. If you don't send or receive Tribute tokens for 42 hours,
-                                you
-                                can make a transaction
-                                with no fee applied. It's important to note that every send or receive of Tribute tokens
-                                resets this 42-hour
-                                timer.</div>
-                        </div>
+            .answer {
+                display: none;
+                font-size: 16px;
+                color: #e0e0e0;
+            }
 
-                        <div class="faq-item">
-                            <div class="question">
-                                Question: How can we be included in the whitelist to not be affected by the tax?
-                            </div>
-                            <div class="answer">
-                                Answer: If you are an exchange or a liquidity pool and would like to be included in the
-                                whitelist to avoid being
-                                affected by the tax, please use one of the available options to contact the developer.
-                                Please note that the
-                                whitelist is specifically designed for liquidity pools or exchanges. As the community
-                                grows, the management of the
-                                whitelist command will be handed over to a DAO (Decentralized Autonomous Organization)
-                                with a fair voting mechanism.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="question">Question: Who is developing this token?</div>
-                            <div class="answer">
-                                Answer: This token is the labor of love and resilience by a single, hobbyist Solidity
-                                developer who found
-                                strength in adversity. I was faced with the devastating loss of my life savings and home
-                                due to a severe
-                                earthquake in Turkey. It was a chapter of hardship and despair. But amidst the rubble, I
-                                found a spark of hope
-                                and determination. That's when THE BEST COIN IN THE WORLD was born. During these
-                                challenging times, I had
-                                moments of solitude which gave me a chance to create and contribute something to the
-                                world. This token is more
-                                than just a project for me; it's a testament to human resilience and the will to rise
-                                even when the odds are
-                                against you.
-                            </div>
-                        </div>
-
+            .faq-item.active .answer {
+                display: block;
+            }
+        </style>
+        <div class="faq-section">
+            <h2 class="section-heading">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="question">Question: Is it safe to use Tribute token?</div>
+                        <div class="answer">Answer: The Tribute token is designed with security in mind. The token
+                            contract has been carefully
+                            audited and does not have any mint or abusable functions. The only function available is
+                            the
+                            Whitelist, which is
+                            used to add current and future liquidity pools. This ensures that buyers are not
+                            affected by
+                            diminishing tax fees.
+                            Additionally, the Whitelist function allows us to add exchange wallets, ensuring that
+                            tax
+                            rules do not impact their
+                            withdrawals and transactions, allowing us to easily comply with their regulations.</div>
                     </div>
+
+                    <div class="faq-item">
+                        <div class="question">Question: What is the total supply of Tribute tokens?</div>
+                        <div class="answer">Answer: The total supply of Tribute tokens is 42 billion, inspired by
+                            the
+                            famous phrase "The
+                            answer to life, the universe, and everything." In a playful homage to this concept, the
+                            token supply has been
+                            set to 42 billion. The Tribute ecosystem implements a deflationary mechanism through
+                            taxes.
+                            If non-burned (dead
+                            address) tokens reach 21 billion, which is half of the initial supply, the tax is
+                            completely
+                            removed. This means
+                            that the tax feature creates deflationary pressure until only 21 billion Tribute tokens
+                            are
+                            left in circulation.
+                            This design ensures the scarcity and value preservation of the remaining tokens.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="question">Question: How does the tax mechanism work?</div>
+                        <div class="answer">Answer: Whenever someone sends or receives Tribute tokens, a diminishing
+                            tax
+                            rate comes into
+                            effect. It starts with a total tax fee of 10% and gradually decreases to 0% if you can
+                            hold
+                            the tokens for 42
+                            hours. This mechanism, known as the "Curse of the Weak Hands," discourages short-term
+                            trading and promotes
+                            long-term holding. It also helps combat bots, as they would be subject to the maximum
+                            tax
+                            rate if they attempt
+                            to manipulate transactions. If you don't send or receive Tribute tokens for 42 hours,
+                            you
+                            can make a transaction
+                            with no fee applied. It's important to note that every send or receive of Tribute tokens
+                            resets this 42-hour
+                            timer.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            Question: How can we be included in the whitelist to not be affected by the tax?
+                        </div>
+                        <div class="answer">
+                            Answer: If you are an exchange or a liquidity pool and would like to be included in the
+                            whitelist to avoid being
+                            affected by the tax, please use one of the available options to contact the developer.
+                            Please note that the
+                            whitelist is specifically designed for liquidity pools or exchanges. As the community
+                            grows, the management of the
+                            whitelist command will be handed over to a DAO (Decentralized Autonomous Organization)
+                            with a fair voting mechanism.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="question">Question: Who is developing this token?</div>
+                        <div class="answer">
+                            Answer: This token is the labor of love and resilience by a single, hobbyist Solidity
+                            developer who found
+                            strength in adversity. I was faced with the devastating loss of my life savings and home
+                            due to a severe
+                            earthquake in Turkey. It was a chapter of hardship and despair. But amidst the rubble, I
+                            found a spark of hope
+                            and determination. That's when THE BEST COIN IN THE WORLD was born. During these
+                            challenging times, I had
+                            moments of solitude which gave me a chance to create and contribute something to the
+                            world. This token is more
+                            than just a project for me; it's a testament to human resilience and the will to rise
+                            even when the odds are
+                            against you.
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const faqItems = document.querySelectorAll(".faq-item");
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const faqItems = document.querySelectorAll(".faq-item");
 
-                    faqItems.forEach(function (item) {
-                        const question = item.querySelector(".question");
-                        const answer = item.querySelector(".answer");
+                faqItems.forEach(function (item) {
+                    const question = item.querySelector(".question");
+                    const answer = item.querySelector(".answer");
 
-                        question.addEventListener("click", function () {
-                            item.classList.toggle("active");
-                        });
+                    question.addEventListener("click", function () {
+                        item.classList.toggle("active");
                     });
                 });
-            </script>
-        </div>
-        <div class="section" id="tokenomics">
-            <style>
-                .chart-legend ul {
-                    padding: 0;
-                    margin: 0;
-                }
-
-                .chart-legend li {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 10px;
-                }
-
-                .legend-color {
-                    display: inline-block;
-                    width: 12px;
-                    height: 12px;
-                    margin-right: 6px;
-                    border-radius: 50%;
-                }
-
-                .legend-label {
-                    font-weight: bold;
-                    margin-right: 10px;
-                }
-
-                .legend-info {
-                    flex: 1;
-                    text-align: justify;
-                }
-            </style>
-            <div class="section" id="tokenomics" style="margin-top: 40px">
-                <h2 class="section-heading">Tokenomics</h2>
-                <div class="chart-container">
-                    <canvas id="myChart"></canvas>
-                    <div class="chart-legend">
-                        <ul>
-                            <li>
-                                <span class="legend-color" style="background-color: #ff0000;"></span>
-                                <span class="legend-label">Developer</span>
-                                <span class="legend-info">7% - Allocation for developers and team members.</span>
-                            </li>
-                            <li>
-                                <span class="legend-color" style="background-color: #00ff00;"></span>
-                                <span class="legend-label">Liquidity Creation</span>
-                                <span class="legend-info">93% - Reserved for liquidity creation (locked forever)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <script>
-            var data = [7, 93];
-            var labels = ["Developer", "Liquidity Creation"];
-
-            var ctx = document.getElementById("myChart").getContext("2d");
-            var myChart = new Chart(ctx, {
-                type: "pie",
-                data: {
-                    datasets: [{
-                        data: data,
-                        backgroundColor: ["#ff0000", "#00ff00"]
-                    }],
-                    labels: labels
-                },
-                options: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            usePointStyle: true
-                        }
-                    },
-                    tooltips: {
-                        enabled: false
-                    }
-                }
             });
         </script>
+    </div>
+    <div class="section" id="tokenomics">
+        <style>
+            .chart-legend ul {
+                padding: 0;
+                margin: 0;
+            }
+
+            .chart-legend li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .legend-color {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin-right: 6px;
+                border-radius: 50%;
+            }
+
+            .legend-label {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+
+            .legend-info {
+                flex: 1;
+                text-align: justify;
+            }
+        </style>
+        <div class="section" id="tokenomics">
+            <h2 class="section-heading">Tokenomics</h2>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+                <div class="chart-legend">
+                    <ul>
+                        <li>
+                            <span class="legend-color" style="background-color: #ff0000;"></span>
+                            <span class="legend-label">Developer</span>
+                            <span class="legend-info">7% - Allocation for developers and team members.</span>
+                        </li>
+                        <li>
+                            <span class="legend-color" style="background-color: #00ff00;"></span>
+                            <span class="legend-label">Liquidity Creation</span>
+                            <span class="legend-info">93% - Reserved for liquidity creation (locked forever)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script>
+        var data = [7, 93];
+        var labels = ["Developer", "Liquidity Creation"];
+
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: "pie",
+            data: {
+                datasets: [{
+                    data: data,
+                    backgroundColor: ["#ff0000", "#00ff00"]
+                }],
+                labels: labels
+            },
+            options: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        usePointStyle: true
+                    }
+                },
+                tooltips: {
+                    enabled: false
+                }
+            }
+        });
+    </script>
 
 
 
@@ -802,11 +849,7 @@
                 storytelling purposes only.</p>
         </div>
     </div>
-    <div id="player"></div>
-    <button onclick="playVideo()">Play</button>
-    <button onclick="pauseVideo()">Pause</button>
 
-   
 </body>
 
 </html>
