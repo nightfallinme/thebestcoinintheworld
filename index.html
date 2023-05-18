@@ -806,39 +806,7 @@
     <button onclick="playVideo()">Play</button>
     <button onclick="pauseVideo()">Pause</button>
 
-    <script>
-        var player;
-
-        function onYouTubePlayerAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'xy5S8s6rTH0',
-                playerVars: {
-                    autoplay: 0,
-                    controls: 0,
-                    modestbranding: 1,
-                    loop: 1,
-                    playlist: 'xy5S8s6rTH0',
-                },
-                events: {
-                    onReady: onPlayerReady,
-                },
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.mute();
-        }
-
-        function playVideo() {
-            player.playVideo();
-        }
-
-        function pauseVideo() {
-            player.pauseVideo();
-        }
-    </script>
+   
 </body>
 
 </html>
